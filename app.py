@@ -10,6 +10,8 @@ def main():
     print("4) Login user")
     print("5) Create file hash")
     print("6) Verify file")
+    print("7) HKDF extract")
+    print("8) HKDF expand")
 
     choice = input("Choice: ")
 
