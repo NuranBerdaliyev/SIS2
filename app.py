@@ -36,6 +36,20 @@ def main():
     elif choice == "6":
         f = input("File name: ")
         verify_file(f)
+    elif choice == "7":
+        salt = input("Salt: ").encode()
+        key_material = input("Key material: ").encode()
+
+        prk = hkdf_extract(salt, key_material)
+        print("PRK:", prk.hex())
+
+    elif choice == "8":
+        prk = bytes.fromhex(input("PRK (hex): "))
+        info = input("Info: ").encode()
+        length = int(input("Length: "))
+
+        okm = hkdf_expand(prk, info, length)
+        print("Derived key:", okm.hex())
 
 if __name__ == "__main__":
     main()
